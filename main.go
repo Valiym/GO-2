@@ -16,7 +16,7 @@ func main() {
 func ErrorWithPanic() {
 	arr := []int{1, 2}
 
-	for i := 0; i <= 4; i++ {
+	for i := 0; i <= 5; i++ {
 		fmt.Printf("%d %d\n", i, arr[i])
 	}
 }
