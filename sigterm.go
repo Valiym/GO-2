@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	ticker := time.NewTicker(time.Second)
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, os.Interrupt, syscall.SIGTERM)
 
@@ -17,9 +18,8 @@ func main() {
 		case <-sigs:
 			fmt.Println("Done")
 			return
-		default:
-			time.Sleep(1 * time.Second)
-			fmt.Println("Waiting for close signal")
+		case t := <-ticker.C:
+			fmt.Println(t)
 		}
 	}
 }
